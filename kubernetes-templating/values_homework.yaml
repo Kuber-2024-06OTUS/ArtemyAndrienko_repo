@@ -86,7 +86,7 @@ deploy:
 
   deployment:
     name: webserver
-    replicas: 3
+    replicas: 1
     portNumber: 8000
 
     imageName: busybox
@@ -146,7 +146,7 @@ deploy:
         claimName: webserver-pvc
     - name: custom-volume
       configMap:
-        name: webserver
+        name: webserver-config
 
     lifecycle:
       preStop:
@@ -161,7 +161,7 @@ deploy:
 
   persistentVolumeClaim:
   - name: webserver-pvc
-    storageClassName: "otus-sc"
+    storageClassName: "yc-network-hdd"
     volumeMode: Filesystem
     accessModes: ReadWriteOnce
     resourcesReqStorage: 100Mi

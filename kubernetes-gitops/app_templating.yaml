@@ -7,7 +7,7 @@ spec:
   project: otus
   source:
     repoURL: https://github.com/Kuber-2024-06OTUS/ArtemyAndrienko_repo
-    targetRevision: HEAD
+    targetRevision: kubernetes-gitops
     path: 'kubernetes-templating/homework-chart'
     helm:
       releaseName: web
@@ -23,3 +23,8 @@ spec:
     syncOptions:
     - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
+    - RespectIgnoreDifferences=true
+  ignoreDifferences:
+  - jsonPointers:
+    - /spec/volumeName
+    kind: PersistentVolumeClaim
